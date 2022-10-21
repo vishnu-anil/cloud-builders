@@ -1,4 +1,6 @@
           #!/bin/bash
+          CLUSTER_NAME=$1
+          REGION=$2
           cd /
           set -x
           whoami 
