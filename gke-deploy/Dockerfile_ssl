@@ -1,0 +1,21 @@
+FROM mcr.microsoft.com/azure-cli
+
+# install kubectl
+RUN az aks install-cli
+
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 \
+    && chmod +x yq_linux_amd64 \
+    && mv yq_linux_amd64 yq \
+    && cp yq /usr/local/bin
+
+# install helm
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+    && chmod 700 get_helm.sh \
+    && ./get_helm.sh
+
+# copy bash script
+COPY helm-deploy-ssl.sh .
+RUN chmod +x helm-deploy-ssl.sh
+
+# run the bash script
+ENTRYPOINT [ "./helm-deploy-ssl.sh" ]
