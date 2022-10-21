@@ -1,8 +1,4 @@
 steps:
-# Run tests.
-- name: 'golang:stretch'
-  entrypoint: 'go'
-  args: ['test', './...']
 
 # Build the gke-deploy binary and put into the builder image.
 - name: 'gcr.io/cloud-builders/docker'
