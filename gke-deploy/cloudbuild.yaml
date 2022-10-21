@@ -2,7 +2,7 @@ steps:
 
 # Build the gke-deploy binary and put into the builder image.
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'init-container','--tag='latest', '.']
+  args: ['build', '-t', 'init-container','--tag=latest', '.']
 
 
 images:
