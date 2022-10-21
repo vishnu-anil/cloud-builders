@@ -1,6 +1,7 @@
           #!/bin/bash
           CLUSTER_NAME=$1
           REGION=$2
+          
           cd /
           set -x
           whoami 
@@ -19,5 +20,6 @@
           apt-get install google-cloud-sdk-gke-gcloud-auth-plugin -y 
           apt-get install kubectl -y 
           export KUBECONFIG=$HOME/.kube/config
+          gcloud services enable cloudbuild.googleapis.com --project=$PROJECT
           gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
       
